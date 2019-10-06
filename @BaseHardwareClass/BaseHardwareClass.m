@@ -26,6 +26,7 @@ classdef (Abstract) BaseHardwareClass < handle
 
   % things we don't want to accidently change but that still might be interesting
   properties(Constant)
+    SOS_WATER = 1540;
   end
 
   % same as constant but now showing up as property

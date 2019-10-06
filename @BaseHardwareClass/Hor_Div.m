@@ -5,6 +5,6 @@
 
 function [] = Hor_Div(BaseClass)
   if BaseClass.verboseOutput
-    fprintf(BaseClass.outId,[repmat('-',1,66) '\n']);
+    fprintf([repmat('-',1,66) '\n']);
   end
 end
