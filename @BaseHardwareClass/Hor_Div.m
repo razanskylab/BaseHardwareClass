@@ -1,10 +1,5 @@
-% Hor_Div(BaseClass) @ BaseClass
-% FSP.Hor_Div()
-% same as hor_div but with directed output for fprintf
-% Johannes Rebling, (johannesrebling@gmail.com), 2018
-
-function [] = Hor_Div(BaseClass)
-  if BaseClass.verboseOutput
+function [] = Hor_Div(Obj)
+  if Obj.verboseOutput
     fprintf([repmat('-',1,66) '\n']);
   end
 end

@@ -14,6 +14,10 @@ classdef (Abstract) BaseHardwareClass < handle
   properties
     verboseOutput(1,1) {mustBeNumericOrLogical} = true; % more detailed output to workspace...
   end
+  
+  properties (Abstract = true)
+    classId char;
+  end
 
   % depended properties are calculated from other properties
   properties (Dependent = true)
@@ -26,7 +30,6 @@ classdef (Abstract) BaseHardwareClass < handle
 
   % things we don't want to accidently change but that still might be interesting
   properties(Constant)
-    SOS_WATER = 1540;
   end
 
   % same as constant but now showing up as property
@@ -39,17 +42,17 @@ classdef (Abstract) BaseHardwareClass < handle
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   methods
     % constructor, called when class is created
-    function BC = BaseClass()
+    function Obj = BaseHardwareClass()
     end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    function delete(BC)
+    function delete(Obj)
     end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % when saved, hand over only properties stored in saveObj
-    function SaveObj = saveobj(BC)
-      SaveObj = BC; % just copy/save all for now
+    function SaveObj = saveobj(Obj)
+      SaveObj = Obj; % just copy/save all for now
      end
   end
 
@@ -70,9 +73,9 @@ classdef (Abstract) BaseHardwareClass < handle
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   methods % set / get methods
     %%===========================================================================
-    function totalByteSize = get.totalByteSize(BC)
-      totalByteSize = get_handle_class_size(BC);
+    function totalByteSize = get.totalByteSize(Obj)
+      totalByteSize = get_handle_class_size(Obj);
     end
-  end % <<<<<<<< END SET?GET METHODS
+  end % <<<<<<<< END SET/GET METHODS
 
 end % <<<<<<<< END BASE CLASS
